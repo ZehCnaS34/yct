@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
 
 STATE = (
     ('nj', 'New Jersey'),
@@ -16,8 +17,6 @@ class Company(models.Model):
     city = models.CharField(max_length=40)
     state = models.CharField(max_length=40, choices=STATE)
     contry = models.CharField(max_length=40)
-
-
     active = models.BooleanField('active company', default=True)
 
     def __str__(self):
@@ -26,15 +25,17 @@ class Company(models.Model):
 
 class Employee(models.Model):
     company = models.ForeignKey(Company)
+    user = models.ForeignKey(User)
     name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
     street = models.CharField(max_length=40)
     city = models.CharField(max_length=40)
     state = models.CharField(max_length=40, choices=STATE)
     contry = models.CharField(max_length=40)
-
-
     active = models.BooleanField('active employee', default=True)
+
+    def clean(self):
+        pass
 
     def __str__(self):
         return self.name
