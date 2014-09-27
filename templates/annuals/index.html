@@ -2,5 +2,14 @@
 <div>
   <h1>{{ am.title }}</h1>
   <p>{{ am.content }}</p>
+  <a href="{% url 'annuals:signam' am.id %}">{{ am.title }}</a>
+</div>
+{% endfor %}
+
+
+{% for ce in ces %}
+<div>
+  <p>{{ ce.content }}</p>
+  <a href="{% url 'annuals:signce' ce.id %}">{{ ce.title }}</a>
 </div>
 {% endfor %}

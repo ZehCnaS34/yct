@@ -1,6 +1,5 @@
-<form method="POST" action="{% url "root" %}" enctype="multipart/form-data">
-  {%  csrf_token %}
-  {{ form }}
-  <input type="submit">
-</form>
-{{ base }}
+{% for f in forms %}
+{% for e in f.field.all %}
+{{ e.render }}
+{% endfor %}
+{% endfor %}

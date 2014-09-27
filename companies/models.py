@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 STATE = (
     ('nj', 'New Jersey'),
     ('wa', 'Washington'),
-    ('ny', 'New York')
+    ('ny', 'New York'),
 )
 
 
@@ -27,7 +27,7 @@ class Employee(models.Model):
     company = models.ForeignKey(Company)
     user = models.ForeignKey(User)
     name = models.CharField(max_length=50)
-    email = models.CharField(max_length=50)
+    email = models.CharField(max_length=50, null=True)
     street = models.CharField(max_length=40)
     city = models.CharField(max_length=40)
     state = models.CharField(max_length=40, choices=STATE)

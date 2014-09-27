@@ -1,0 +1,7 @@
+{{ am.title }}
+
+<ul>
+  {{ for f in am.reference_links.get_queryset  }}
+    <li>{{ f.href }}</li>
+  {{ endfor }}
+</ul>
