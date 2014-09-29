@@ -10,6 +10,8 @@ STATE = (
 
 
 class AbstractEmployee(models.Model):
+    user = models.ForeignKey(User)
+
     class Meta:
         abstract = True
 
