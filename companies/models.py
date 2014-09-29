@@ -9,6 +9,11 @@ STATE = (
 )
 
 
+class AbstractEmployee(models.Model):
+    class Meta:
+        abstract = True
+
+
 # Create your models here.
 class Company(models.Model):
     name = models.CharField(max_length=50)
