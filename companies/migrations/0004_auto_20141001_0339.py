@@ -7,20 +7,18 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('companies', '0005_auto_20140921_1541'),
+        ('companies', '0003_auto_20141001_0338'),
     ]
 
     operations = [
-        migrations.AddField(
+        migrations.AlterField(
             model_name='company',
             name='active',
-            field=models.BooleanField(default=True),
-            preserve_default=True,
+            field=models.BooleanField(default=True, verbose_name=b'active'),
         ),
-        migrations.AddField(
+        migrations.AlterField(
             model_name='employee',
             name='active',
-            field=models.BooleanField(default=True),
-            preserve_default=True,
+            field=models.BooleanField(default=True, verbose_name=b'active'),
         ),
     ]

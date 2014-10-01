@@ -1,7 +1,19 @@
 from django.contrib import admin
 
 from companies.models import Company, Employee
-from django.contrib.auth.models import User
+
+
+class EmployeeAdmin(admin.ModelAdmin):
+    fields = ['company',
+              'name',
+              'email',
+              'street',
+              'city',
+              'state',
+              'country',
+              'active']
+
+
 # Register your models here.
 admin.site.register(Company)
-admin.site.register(Employee)
+admin.site.register(Employee, EmployeeAdmin)
