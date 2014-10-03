@@ -1,7 +1,5 @@
 from django.db import models
-from companies.models import Company, Employee
-from django.db.models.signals import post_save
-from django.dispatch import receiver
+from companies.models import Company
 
 
 ANNUAL_TYPES = (
@@ -38,20 +36,3 @@ class AnnualMeeting(models.Model):
 
     def __str__(self):
         return self.title
-
-
-class AnnualResponse(models.Model):
-    employee = models.ForeignKey(Employee)
-    annual_meeting = models.ForeignKey(AnnualMeeting)
-
-    def __str__(self):
-        return self.employee + " " + self.annual_meeting
-
-
-@receiver(post_save, sender=AnnualMeeting)
-def create_annual_response(sender, **kwargs):
-    employees = sender.company.employee_set
-
-    for e in employees:
-        ar = AnnualResponse(employee=e, annual_meeting=sender)
-        ar.save()

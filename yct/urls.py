@@ -10,4 +10,5 @@ urlpatterns = patterns('',
                        # url(r'^blog/', include('blog.urls')),
                        url(r'^$', views.index, name='root'),
                        url(r'^admin/', include(admin.site.urls)),
-                       url(r'^annuals/', include('annuals.urls', namespace='annuals')))
+                       url(r'^annuals/', include('annuals.urls', namespace='annuals')),
+                       url(r'^forms/', include('forms.urls', namespace='forms')))

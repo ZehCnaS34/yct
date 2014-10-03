@@ -2,6 +2,7 @@ from django.db import models
 # from django.core.exceptions import ValidationError
 from django.db.models.signals import pre_save
 from django.contrib.auth.models import User
+from companies import signals
 
 STATE = (
     ('nj', 'New Jersey'),
@@ -19,6 +20,9 @@ class ProfileAbstract(models.Model):
     country = models.CharField(max_length=40, null=True)
     active = models.BooleanField('active', default=True)
 
+    def clean(self):
+        pass
+
     class Meta:
         abstract = True
 
@@ -32,10 +36,7 @@ class Company(ProfileAbstract):
 
 class Employee(ProfileAbstract):
     user = models.ForeignKey(User)
-    company = models.ForeignKey(Company, null=True)
-
-    def clean(self):
-        pass
+    company = models.ForeignKey(Company, null=False)
 
     def __str__(self):
         if self.name is None:
@@ -43,19 +44,5 @@ class Employee(ProfileAbstract):
         else:
             return self.name
 
-
-def create_user(sender, **kwargs):
-    password = User.objects.make_random_password()
-    e = kwargs['instance']
-    fn, ln = e.name.split(' ')
-    uname = e.name + e.company.name
-    user = User(username=uname,
-                password=password,
-                first_name=fn,
-                last_name=ln,
-                email=e.email)
-    user.save()
-    e.user_id = user.id
-
 # create user before save
-pre_save.connect(create_user, sender=Employee)
+pre_save.connect(signals.create_user, sender=Employee)

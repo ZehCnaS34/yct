@@ -1,0 +1,54 @@
+{ // paragraph
+  "name":"pa",
+  "display": "this is the display",
+  "content": "this is the content"
+}
+
+
+{ // checkbox
+  "name":"cb",
+  "display": "this is the display",
+  "content": [{
+    "value": "value",
+    "display": "something"
+  },{
+    "value": "value",
+    "display": "something"
+  }]
+}
+
+{ // radio
+  "name":"rd",
+  "display": "this is the display",
+  "content": [{
+    "value": "value",
+    "display": "something"
+  },{
+    "value": "value",
+    "display": "something"
+  }]
+}
+
+{ // text box
+  "name":"tb",
+  "display": "this is the display",
+  "content": [{
+    "value": "value",
+    "display": "something"
+  },{
+    "value": "value",
+    "display": "something"
+  }]
+}
+
+{ // textarea
+  "name":"ta",
+  "display": "this is the display",
+  "content": [{
+    "value": "value",
+    "display": "something"
+  },{
+    "value": "value",
+    "display": "something"
+  }]
+}
